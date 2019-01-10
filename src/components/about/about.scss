@@ -1,4 +1,14 @@
 
-.section-home{
-    flex: 1
+.section-wrap{
+    border-sizing:border-box;
+    width: 100%;
+    .section-home{
+        width: 1120px;
+        margin: 0 auto;
+    }
+    .section-redsong{
+        >h2{
+            border-bottom: 2px solid #f2f2f2;
+        }
+    }
 }

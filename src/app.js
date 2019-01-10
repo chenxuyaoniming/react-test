@@ -5,6 +5,8 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Index from './index';
 
+import 'antd/dist/antd.css'
+
 ReactDom.render(<Index/>,document.getElementById('app'))
 
 console.log('===启动成功===')

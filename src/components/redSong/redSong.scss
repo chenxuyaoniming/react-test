@@ -1,0 +1,25 @@
+.redsong-box{
+    float: left;
+    width: 250px;
+    height: 280px;
+    border-bottom: 1px solid #f6f6f6;
+    .redsong-img{
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        >img{
+            width: 100%;
+            height: 100%;
+            transition: 0.5s;
+            &:hover{
+                transform: scale(1.05)
+            }
+        }
+    }
+}
+.redsong-list{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

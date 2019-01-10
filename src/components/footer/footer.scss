@@ -1,8 +1,18 @@
 #footer {
-    height: 80px;
+    height: 60px;
+    width: 100%;
     background-color: rgb(168, 11, 11);
-    border-top: 2px solid #f6f6f6;
+    border-top: 2px solid #110404;
     padding: 0 20px;
     border-sizing:border-box;
-    
+    position: fixed;
+    bottom: 0;
+    transition: 0.5s;
+    transform: translateY(50px);
+}
+.toHidden{
+    transform: translateY(50px)!important;
+}
+.toShow{
+    transform: translateY(0)!important;
 }
