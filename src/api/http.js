@@ -46,5 +46,20 @@ export default {
         }).catch(err=>{
             console.log(err,'==歌曲获取失败==')
         })
+    },
+    searchSong(data){
+        return http.get('/search/song',{
+            params:{
+                format:'json',
+                keyword:data,
+                page:1,
+                pagesize:20,
+                showtype:1
+            }
+        }).then(res=>{
+            return res
+        }).catch(err=>{
+            console.log(err,'歌曲搜索失败')
+        })
     }
 }

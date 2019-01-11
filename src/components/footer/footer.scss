@@ -16,3 +16,28 @@
 .toShow{
     transform: translateY(0)!important;
 }
+.footer-content{
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+}
+.user-header{
+    left: 40px;
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+.user-name{
+    float: left;
+    margin-left: 50px;
+    height: 40px;
+    width: 300px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+}
+.user-contr{
+    float: left;
+}

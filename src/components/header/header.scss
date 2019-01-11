@@ -33,4 +33,14 @@
             right: 5px;
         }
     }
+    #search{
+        float: left;
+        height: 100%;
+        // width: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .input{
+        }
+    }
 }

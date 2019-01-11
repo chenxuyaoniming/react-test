@@ -1,5 +1,5 @@
 import React from 'react';
-import {HashRouter as Router,Route,Link ,Redirect,Switch} from 'react-router-dom';
+import {BrowserRouter as Router,Route,Link ,Redirect,Switch} from 'react-router-dom';
 import About from './components/about/about'
 import './index.scss'
 import Header from './components/header/header'
@@ -16,21 +16,18 @@ class Home extends React.Component{
 
     render(){
         return(
-            <div id='index'>
-                <Header data={this.state.name}/>
-                
-                    <Router>
-                        <Switch>
-                            <Route path='/about' component={About} />
-                            <Route path='/list/:data' component={List}/>
-                            <Redirect from='/' to='/about' />
+            <Router>
+                <div id='index'>     
+                    <Header data={this.state.name}/>               
+                            <Switch>
+                                <Route path='/about' component={About} />
+                                <Route path='/list' component={List}/>
+                                <Redirect from='/' to='/about' />
+                            </Switch>
+                    <Footer/>  
+                </div>
+            </Router>
 
-                        </Switch>
-                    </Router>
-                    
-                
-                <Footer/>
-            </div>
            
         )
     }

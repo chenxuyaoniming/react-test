@@ -15,6 +15,14 @@ module.exports = merge(baseConfig, {
                 pathRewrite: {
                   '^/api': ''
                 }
+            },
+            '/search':{
+                target: 'http://mobilecdn.kugou.com/api/v3/search/',
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                  '^/search': ''
+                }
             }
         }
     }
