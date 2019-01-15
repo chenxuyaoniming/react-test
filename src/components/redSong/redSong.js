@@ -2,7 +2,7 @@
 import React from 'react';
 
 import './redSong.scss'
-import {Link,HashRouter as Router ,withRouter } from 'react-router-dom';
+import {Link,BrowserRouter as Router ,withRouter } from 'react-router-dom';
 import http from '../../api/http'
 
 class RedSong extends React.Component{

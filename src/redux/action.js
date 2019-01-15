@@ -1,9 +1,10 @@
 
 
-export function song(url){
+export function song(obj){
+    console.log(obj,'song')
     return {
-        type:'url',
-        song:url
+        type:obj.type,
+        song:obj.song
     }
 }
 

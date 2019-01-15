@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link,HashRouter as Router ,withRouter } from 'react-router-dom';
+import {Link,BrowserRouter as Router ,withRouter } from 'react-router-dom';
 import { Input } from 'antd';
 import './header.scss';
 

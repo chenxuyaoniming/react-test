@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {withRouter} from 'react-router-dom';
 import './about.scss'
 import http from 'axios';
 import Swiper from '../swiper/swiper';
@@ -46,4 +46,4 @@ class About extends React.Component{
 
 }
 
-export default About
+export default withRouter(About)
