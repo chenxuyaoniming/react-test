@@ -4,6 +4,8 @@ import React from 'react';
 import './footer.scss';
 import { Avatar ,Button,message , Progress} from 'antd';
 import store from '../../redux/store';
+import SongList from '../songList/songList';
+
 var timer ;
 class Footer extends React.Component{
     constructor(props){
@@ -21,17 +23,22 @@ class Footer extends React.Component{
             playSong:null,
             time:0,
             oldSong:null,
-            oldSongList:null
+            oldSongList:null,
+            isshow:false
         }
     }
-
+    toShowList(){
+        this.setState({
+            isshow:!this.state.isshow
+        })
+    }
     render(){
         return(
             <div id='footer' onMouseEnter={this.enter.bind(this)} ref='footer'
                  onMouseLeave = {this.out.bind(this)}
             >   
                 <div className='footer-content'>
-                    <div className='user-header'>
+                    <div className='user-header' onClick={this.toShowList.bind(this)}>
                         <Avatar icon='user' style={{height:'100%',width:'100%',}}></Avatar> 
                     </div>
                     <p className='user-name'>正在播放：<b>{this.state.playSong ? this.state.playSong.fileName : null}</b></p>
@@ -47,7 +54,12 @@ class Footer extends React.Component{
                         <Button type="primary" style={{color:'#fff',fontSize:'14px',height:'40px',width:'80px'}} onClick=
                         {this.audioRe}>下一首</Button>
                     </div>
-
+                    {
+                        this.state.isshow?(<div className='user-songList'>
+                        <SongList data={this.state.songList} />
+                    </div>):false
+                    }
+                    
                     <audio ref='audio'></audio>
                 </div>
                 

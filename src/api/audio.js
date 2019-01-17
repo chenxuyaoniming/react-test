@@ -2,6 +2,7 @@ var audio = null;
 
 export default {
     play(obj,url){
+        obj.src = url ;
         obj.play()
     },
     progress(obj,cb){
