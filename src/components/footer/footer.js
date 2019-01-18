@@ -20,7 +20,7 @@ class Footer extends React.Component{
             url:[],
             count:0,
             songList:[],
-            playSong:null,
+            playSong:{},
             time:0,
             oldSong:null,
             oldSongList:null,
@@ -77,7 +77,7 @@ class Footer extends React.Component{
                 songList:[obj.song,...that.state.songList],
                 count:0
             })
-            this.AutoPlay(this.state.playSong.url)
+            this.AutoPlay()
         }
         if(obj.id === 'list'){
             that.setState({
@@ -95,29 +95,35 @@ class Footer extends React.Component{
        
         return true;
     }
-    AutoPlay(url){
-        this.audio.src = url;
+    AutoPlay(){
+        console.log(`当前播放第${this.state.count}歌`,this.state.playSong)
+        this.audio.src = this.state.songList[this.state.count].url;
         this.audio.play()
         var _that = this;
-        this.audio.timer = setInterval(()=>{
+        var timer = setInterval(()=>{
             var t = Math.floor((_that.audio.currentTime/_that.audio.duration)*100) ;
+            if(t === 100){
+                clearInterval(timer);
+                var id = ++ _that.state.count;
+                if(id>=_that.state.songList.length){
+                    message.info('11歌曲已经播放完毕！！');
+                    return false;                    
+                }else{
+                    if(_that.state.songList[id]){
+                        _that.setState({
+                            playSong:_that.state.songList[id],
+                            count:id
+                        })
+                        _that.AutoPlay(_that.state.playSong.url)
+                    }else{
+                        message.info('22歌曲已经播放完毕！！')
+                    }
+                }
+            }
             _that.setState({
                 time:t
             })
-            if(t === 1000){
-                clearInterval(_that.audio.timer);
-                var id = ++ this.state.count;
-                if(_that.state.songList[id]){
-                    _that.setState({
-                        playSong:_that.state.songList[id],
-                        count:id
-                    })
-                    _that.AutoPlay(_that.state.playSong.url)
-                }else{
-                    message.info('歌曲已经播放完毕！！')
-                }
-            }
-        },500)
+        },1000)
     }
     enter(){
         clearTimeout(timer)
@@ -141,12 +147,15 @@ class Footer extends React.Component{
                 this.audio.play()
             }else{
                 if(this.state.songList.length>0){
-                    var url = this.state.songList[0].url
                     this.setState({
-                        count:0,
-                        playSong:this.state.songList[0]
+                        playSong:this.state.songList[0],
+                        count:0
                     })
-                    this.AutoPlay(url)
+                    console.log(this.state.playSong,this.state.songList,'play')
+                    var that = this;
+                    setTimeout(()=>{
+                        that.AutoPlay()
+                    },100)
                 }else{
                     message.info('歌单里还没有歌曲呢～')
                 }
@@ -157,28 +166,29 @@ class Footer extends React.Component{
         }
     }
     audioAdd(){
-        var id = this.state.count;
-            id--;
+        var id = -- this.state.count;
         if(id>=0){
             this.setState({
                 playSong:this.state.songList[id],
                 count:id
             })
-            this.AutoPlay(this.state.playSong.url)
+        console.log(this.state.count,'count--')        
+
+            this.AutoPlay()
         }else{
             message.info('已经是最后一首了')            
         }
        
     }
     audioRe(){
-        var id = this.state.count;
-            id++;
+        var id = ++ this.state.count;
         if(id<this.state.songList.length){
             this.setState({
                 playSong:this.state.songList[id],
                 count:id
             })
-            this.AutoPlay(this.state.playSong.url)
+        console.log(this.state.count,'count++')
+            this.AutoPlay()
         }else{
             message.info('已经是最后一首了')            
         }

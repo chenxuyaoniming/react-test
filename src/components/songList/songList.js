@@ -9,7 +9,6 @@ class SongList extends React.Component{
 
     render(){
         let list ;
-        console.log(this.props.data,'songList')
         if(this.props.data.length>0){
             list = <List
                     itemLayout="horizontal"
